@@ -2,7 +2,7 @@ import Header from "./Header";
 import Loader from "./Loader";
 import CartOverview from "../features/cart/CartOverview";
 import { Outlet, useNavigation } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
+import { Slide, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function AppLayout() {
@@ -24,14 +24,15 @@ function AppLayout() {
       <CartOverview />
 
       <ToastContainer
-        position="top-right"
-        autoClose={900}
+        position="top-center"
+        autoClose={2000}
         hideProgressBar={false}
         newestOnTop={false}
+        rtl={false}
         closeOnClick
         pauseOnHover
         theme="colored"
-        transition:Bounce
+        transition:Slide
       />
     </div>
   );

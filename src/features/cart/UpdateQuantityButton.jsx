@@ -11,14 +11,14 @@ const UpdateQuantityButton = ({ pizzaId, currentCartQuantity }) => {
         type={"round"}
         onClick={() => dispatch(decreaseItemQuantity(pizzaId))}
       >
-        ➖
+        -
       </Button>
       <span>{currentCartQuantity}</span>
       <Button
         type={"round"}
         onClick={() => dispatch(increaseItemQuantity(pizzaId))}
       >
-        ➕
+        +
       </Button>
     </div>
   );
