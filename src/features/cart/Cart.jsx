@@ -12,8 +12,11 @@ function Cart() {
   const dispatch = useDispatch();
 
   const handleDeleteCart = () => {
-    dispatch(clearCart());
-    toast.warning("Cart cleared");
+    const confirm = window.confirm("Are you sure you want to clear the cart?");
+    if (confirm) {
+      dispatch(clearCart());
+      toast.warning("Cart cleared");
+    }
   };
 
   if (!cart.length) return <EmptyCart />;

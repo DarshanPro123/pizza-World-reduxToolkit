@@ -25,19 +25,14 @@ function AppLayout() {
 
       <ToastContainer
         position="top-right"
-        autoClose={2000}
+        autoClose={900}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
         pauseOnHover
         theme="colored"
         transition:Bounce
       />
-      {/* Same as */}
-      <ToastContainer />
     </div>
   );
 }
