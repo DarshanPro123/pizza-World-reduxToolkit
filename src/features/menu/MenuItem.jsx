@@ -4,6 +4,7 @@ import { formatCurrency } from "../../utils/helpers";
 import { addItem, getCurrentItemQuantity } from "../cart/cartSlice";
 import { toast } from "react-toastify";
 import ButtonItem from "../cart/ButtonItem";
+import UpdateQuantityButton from "../cart/UpdateQuantityButton";
 
 function MenuItem({ pizza }) {
   const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
@@ -44,7 +45,15 @@ function MenuItem({ pizza }) {
             </p>
           )}
 
-          {isCart && <ButtonItem pizzaId={id} />}
+          {isCart && (
+            <div className="  flex gap-4 items-center text-sm font-medium text-stone-500 ">
+              <UpdateQuantityButton
+                pizzaId={id}
+                currentCartQuantity={currentCartQuantity}
+              />
+              <ButtonItem pizzaId={id} />
+            </div>
+          )}
 
           {!soldOut && !isCart && (
             <Button onClick={handleCartAdd} type="small">
