@@ -1,8 +1,24 @@
+import { useDispatch } from "react-redux";
 import Button from "../../ui/Button";
 import { formatCurrency } from "../../utils/helpers";
+import { addItem } from "../cart/cartSlice";
+import { toast } from "react-toastify";
 
 function MenuItem({ pizza }) {
   const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
+  const dispatch = useDispatch();
+  const handleCartAdd = () => {
+    // console.log("Add to cart", id);
+    const newItem = {
+      pizzaId: id,
+      name,
+      quantity: 1,
+      unitPrice,
+      totalPrice: unitPrice * 1,
+    };
+    dispatch(addItem(newItem));
+    toast.success(`${name} added to cart`);
+  };
 
   return (
     <li className="flex gap-4 py-2">
@@ -26,7 +42,9 @@ function MenuItem({ pizza }) {
           )}
 
           {!soldOut ? (
-            <Button type="small">Add to cart</Button>
+            <Button onClick={handleCartAdd} type="small">
+              Add to cart
+            </Button>
           ) : (
             <p
               className="text-lg text-center font-semibold uppercase text-stone-500
